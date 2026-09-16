@@ -244,12 +244,27 @@ if result is not None:
 # --------------------------------------------------------------------------
 # Companion Desmos activity (placeholder)
 # --------------------------------------------------------------------------
-st.markdown("### Interactive Desmos Activity — Visualizing the FFT Butterfly Structure")
-st.info(
-    "**Desmos activity:** _link to be added_. A companion Desmos graph "
-    "illustrating the butterfly diagram and twiddle factors for the "
-    "4-point or 8-point DIT FFT can be built and linked here later, the "
-    "same way the Experiment 2 Desmos activity was added."
+st.markdown("### Interactive Desmos Activity — 4-Point DFT Verification Calculator")
+st.success("**Desmos activity is live.** Click the link below to open it.")
+st.markdown(
+    "**Desmos link:** [4-Point DFT Verification Calculator — Desmos]"
+    "(https://www.desmos.com/calculator/xiyqnq8gf6)"
+)
+st.write(
+    "This companion Desmos graph independently computes the real part, "
+    "imaginary part, and magnitude of a 4-point DFT from four "
+    "slider-controlled input values (x₀–x₃), using the same closed-form "
+    "expressions the DIT FFT algorithm produces for N = 4. Move the "
+    "sliders to any values, then compare Desmos's Re/Im/magnitude results "
+    "against the Stage 3 (final result) table above for the same input "
+    "sequence — they should match exactly, giving students an independent "
+    "way to verify their understanding of the FFT output."
+)
+st.caption(
+    "Note: Desmos does not support complex numbers or diagram drawing, so "
+    "this activity verifies the numerical DFT result rather than "
+    "illustrating the butterfly diagram directly - the Stage 1/2/3 tables "
+    "and expanders above serve that purpose."
 )
 
 st.markdown("### Post-Lab Questions")
