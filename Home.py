@@ -113,6 +113,7 @@ st.markdown("## Faculty Profile")
 profile_col, details_col = st.columns([1, 2])
 
 with profile_col:
+    st.image("assets/faculty_photo.jpg", width=180)
     st.markdown(
         "**Dr. G. Anitha**  \n"
         "Assistant Professor  \n"
