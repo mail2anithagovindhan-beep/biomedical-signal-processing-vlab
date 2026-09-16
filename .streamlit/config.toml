@@ -1,0 +1,15 @@
+# Streamlit theme configuration for the Biomedical Signal Processing Virtual Lab.
+# Colors are drawn from the SRM Institute of Science and Technology logo
+# (dominant blue sampled from assets/srm_logo.png) for a consistent,
+# pale-blue "SRM" look across every page.
+#
+# This file applies automatically to the whole app (Home + all experiment
+# pages) - no per-page code changes are needed for theming.
+
+[theme]
+base = "light"
+primaryColor = "#007BBF"            # SRM logo blue - buttons, sliders, active elements, links
+backgroundColor = "#EAF4FB"         # pale blue - main page background
+secondaryBackgroundColor = "#D9EAF7" # slightly deeper pale blue - sidebar and widget backgrounds
+textColor = "#1A2B3C"               # dark navy - body text, for good contrast on the pale blue
+font = "sans serif"
