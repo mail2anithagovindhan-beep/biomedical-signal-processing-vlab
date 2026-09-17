@@ -199,6 +199,34 @@ def synthetic_eog(t, amplitude=1.0, **kwargs):
     return amplitude * (slow_drift + blinks)
 
 
+def synthetic_ppg(t, amplitude=1.0, heart_rate=72.0, **kwargs):
+    """Educational synthetic PPG (photoplethysmogram): a sharp systolic
+    pulse followed by a smaller dicrotic (diastolic) pulse, repeated at a
+    fixed heart rate. This is a simplified teaching model, not a
+    physiological simulator."""
+    rr = 60.0 / heart_rate  # seconds per beat
+    x = np.zeros_like(t)
+
+    # (fraction of RR interval for center, width as fraction of RR, relative amplitude)
+    components = [
+        (0.15, 0.055, 1.00),  # systolic peak
+        (0.45, 0.100, 0.35),  # dicrotic / diastolic peak
+    ]
+
+    t_min, t_max = float(t.min()), float(t.max())
+    first_beat = int(np.floor(t_min / rr)) - 1
+    last_beat = int(np.ceil(t_max / rr)) + 1
+
+    for beat in range(first_beat, last_beat + 1):
+        beat_start = beat * rr
+        for frac_center, frac_width, frac_amp in components:
+            mu = beat_start + frac_center * rr
+            sigma = max(frac_width * rr, 1e-4)
+            x += _gaussian_pulse(t, mu, sigma, frac_amp * amplitude)
+
+    return x
+
+
 # --------------------------------------------------------------------------
 # Signal catalog: drives both the sidebar UI and the generation logic
 # --------------------------------------------------------------------------
@@ -348,6 +376,19 @@ SIGNAL_CATALOG: dict[str, dict[str, SignalConfig]] = {
                 "movement activity as a slow-changing baseline with "
                 "occasional sharper deflections representing blink-like "
                 "events."
+            ),
+            needs_frequency=False,
+            is_biomedical=True,
+        ),
+        "PPG (Photoplethysmogram)": SignalConfig(
+            generator=synthetic_ppg,
+            formula="Systolic pulse plus smaller dicrotic (diastolic) pulse, repeated per heartbeat",
+            description=(
+                "Educational synthetic biomedical signal. Represents the "
+                "blood-volume pulse detected optically at the skin surface: "
+                "a sharp systolic peak from heart contraction, followed by "
+                "a smaller dicrotic peak caused by arterial pressure "
+                "reflection during diastole."
             ),
             needs_frequency=False,
             is_biomedical=True,
