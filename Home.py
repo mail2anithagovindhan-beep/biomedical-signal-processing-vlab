@@ -33,7 +33,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown(
         "Use the navigation above to open the **Home** page or any of the "
-        "six experiment pages."
+        "ten experiment pages."
     )
     st.markdown("---")
     st.markdown("**External Resources**")
@@ -89,6 +89,10 @@ st.markdown(
     4. **Digital Butterworth Filter** — Design and apply IIR Butterworth filters.
     5. **Digital Chebyshev Type-I Low-Pass Filter** — Design and apply IIR Chebyshev Type-I filters.
     6. **DIT FFT (2/4/8-point)** — Study the Decimation-in-Time Fast Fourier Transform.
+    7. **FIR Filter Design (Hamming Window)** — Design windowed FIR filters using a Hamming window.
+    8. **FIR Filter Design (Hanning Window)** — Design windowed FIR filters using a Hanning window.
+    9. **Analysis of ECG Signal** — Denoise a synthetic ECG signal with a moving-average filter.
+    10. **Adaptive Noise Canceller** — Simulate LMS-based adaptive noise cancellation.
 
     ### Companion Tools
 
